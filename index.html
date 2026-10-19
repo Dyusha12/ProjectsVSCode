@@ -999,6 +999,35 @@
       flex: 0 0 auto;
     }
 
+    /* ---------------- RATING TOAST ---------------- */
+
+    .rating-toast {
+      position: fixed;
+      right: 25px;
+      bottom: calc(25px + 76px);
+      z-index: 2000;
+      max-width: 340px;
+      padding: 16px 20px;
+      border-radius: 16px;
+      background: var(--green-dark);
+      color: white;
+      box-shadow: 0 15px 45px rgba(20, 40, 28, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateY(140px);
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+    }
+
+    .rating-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
     /* ---------------- CART DRAWER ---------------- */
 
     body.cart-open {
@@ -1687,6 +1716,13 @@
         left: 15px;
         right: 15px;
         bottom: 15px;
+        max-width: none;
+      }
+
+      .rating-toast {
+        left: 15px;
+        right: 15px;
+        bottom: calc(15px + 76px);
         max-width: none;
       }
     }
@@ -2399,6 +2435,13 @@
     <div id="toastMessage">Товар добавлен в корзину</div>
   </div>
 
+  <!-- ================= RATING TOAST ================= -->
+
+  <div class="rating-toast" id="ratingToast" role="status" aria-live="polite">
+    <div class="toast-icon">⭐</div>
+    <div id="ratingToastMessage">Вы поставили оценку</div>
+  </div>
+
   <!-- ================= CART DRAWER ================= -->
 
   <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
@@ -2454,6 +2497,10 @@
       const cartFooterEl = document.getElementById("cartFooter");
       const cartTotalEl = document.getElementById("cartTotal");
       const cartClearBtn = document.getElementById("cartClear");
+
+      const ratingToast = document.getElementById("ratingToast");
+      const ratingToastMessage = document.getElementById("ratingToastMessage");
+      let ratingToastTimer;
 
       let toastTimer;
 
@@ -2798,6 +2845,7 @@
 
             render();
             animateValue();
+            showRatingToast(`Вы поставили ${value} из 5 звёзд`);
           });
         });
 
@@ -2829,6 +2877,17 @@
 
         toastTimer = setTimeout(() => {
           cartToast.classList.remove("show");
+        }, 2800);
+      }
+
+      function showRatingToast(message) {
+        clearTimeout(ratingToastTimer);
+
+        ratingToastMessage.textContent = message;
+        ratingToast.classList.add("show");
+
+        ratingToastTimer = setTimeout(() => {
+          ratingToast.classList.remove("show");
         }, 2800);
       }
 
