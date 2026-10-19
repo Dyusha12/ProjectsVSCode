@@ -533,6 +533,13 @@
       transition: transform 0.35s ease;
     }
 
+    .product-emoji img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      display: block;
+    }
+
     .product-card:hover .product-emoji {
       transform: scale(1.08) rotate(-3deg);
     }
@@ -1129,6 +1136,13 @@
       font-size: 1.7rem;
       background: var(--green-light);
       border-radius: 14px;
+    }
+
+    .cart-item-emoji img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      display: block;
     }
 
     .cart-item-info {
@@ -1922,7 +1936,9 @@
 
           <article class="product-card" data-category="dogs">
             <div class="product-image">
-              <div class="product-emoji" aria-hidden="true">🥣</div>
+              <div class="product-emoji" aria-hidden="true">
+                <img src="Images/food.png" alt="Лакомый ужин" />
+              </div>
             </div>
 
             <div class="product-body">
@@ -1971,7 +1987,9 @@
 
           <article class="product-card" data-category="toys">
             <div class="product-image">
-              <div class="product-emoji" aria-hidden="true">🧶</div>
+              <div class="product-emoji" aria-hidden="true">
+                <img src="Images/ball.png" alt="Мячик «Весельчак»" />
+              </div>
             </div>
 
             <div class="product-body">
@@ -2020,7 +2038,9 @@
 
           <article class="product-card" data-category="cats">
             <div class="product-image">
-              <div class="product-emoji" aria-hidden="true">🐟</div>
+              <div class="product-emoji" aria-hidden="true">
+                <img src="Images/treat.png" alt="Котолакомство" />
+              </div>
             </div>
 
             <div class="product-body">
@@ -2069,7 +2089,9 @@
 
           <article class="product-card" data-category="care">
             <div class="product-image">
-              <div class="product-emoji" aria-hidden="true">🪮</div>
+              <div class="product-emoji" aria-hidden="true">
+                <img src="Images/hairbrush.png" alt="Мягкая расчёска" />
+              </div>
             </div>
 
             <div class="product-body">
@@ -2118,7 +2140,9 @@
 
           <article class="product-card" data-category="rodents">
             <div class="product-image">
-              <div class="product-emoji" aria-hidden="true">🌻</div>
+              <div class="product-emoji" aria-hidden="true">
+                <img src="Images/grains.png" alt="Зёрнышки «Шустрик»" />
+              </div>
             </div>
 
             <div class="product-body">
@@ -2584,7 +2608,9 @@
           .map(
             (item) => `
               <div class="cart-item">
-                <div class="cart-item-emoji" aria-hidden="true">${item.emoji}</div>
+                <div class="cart-item-emoji" aria-hidden="true">
+                  <img src="${item.emoji}" alt="" />
+                </div>
 
                 <div class="cart-item-info">
                   <div class="cart-item-name">${item.name}</div>
@@ -2665,8 +2691,8 @@
             10
           );
           const emoji = card
-            .querySelector(".product-emoji")
-            .textContent.trim();
+            .querySelector(".product-emoji img")
+            .getAttribute("src");
 
           addToCart(name, price, emoji);
 
