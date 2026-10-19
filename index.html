@@ -1366,6 +1366,98 @@
       animation: pop 0.35s ease;
     }
 
+    /* ---------------- PRODUCT RATING ---------------- */
+
+    @property --fill {
+      syntax: "<percentage>";
+      inherits: false;
+      initial-value: 0%;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin: 14px 0 17px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(49, 95, 69, 0.16);
+    }
+
+    .rating-stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .star {
+      border: 0;
+      padding: 0;
+      background: linear-gradient(
+        90deg,
+        var(--orange) var(--fill, 0%),
+        #dcd4c0 var(--fill, 0%)
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.16s ease;
+    }
+
+    .star:hover {
+      transform: scale(1.22) translateY(-1px);
+    }
+
+    .star:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .rating-meta {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .rating-value {
+      color: var(--green-dark);
+      font-size: 0.96rem;
+      font-weight: 900;
+    }
+
+    .rating-value.pop {
+      animation: pop 0.3s ease;
+    }
+
+    .rating-remove {
+      margin-left: auto;
+      border: 0;
+      padding: 3px 6px;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--orange-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition:
+        color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .rating-remove:hover {
+      color: #b13c2c;
+      background: var(--beige);
+    }
+
     /* ---------------- RESPONSIVE ---------------- */
 
     @media (max-width: 1000px) {
@@ -1805,6 +1897,28 @@
                 с мясом и овощами.
               </p>
 
+              <div
+                class="product-rating"
+                data-total="109"
+                data-count="23"
+                aria-label="Рейтинг товара «Лакомый ужин»"
+              >
+                <div class="rating-stars" role="group" aria-label="Поставьте оценку от 1 до 5">
+                  <button class="star" type="button" data-value="1" aria-label="Оценить на 1 из 5">★</button>
+                  <button class="star" type="button" data-value="2" aria-label="Оценить на 2 из 5">★</button>
+                  <button class="star" type="button" data-value="3" aria-label="Оценить на 3 из 5">★</button>
+                  <button class="star" type="button" data-value="4" aria-label="Оценить на 4 из 5">★</button>
+                  <button class="star" type="button" data-value="5" aria-label="Оценить на 5 из 5">★</button>
+                </div>
+
+                <span class="rating-meta">
+                  <span class="rating-value">4,7</span>
+                  <span class="rating-count">23 оценки</span>
+                </span>
+
+                <button class="rating-remove" type="button" hidden>Убрать оценку</button>
+              </div>
+
               <div class="product-footer">
                 <span class="price">890 ₽</span>
 
@@ -1831,6 +1945,28 @@
                 Яркая безопасная игрушка для активных
                 игр дома и на прогулке.
               </p>
+
+              <div
+                class="product-rating"
+                data-total="196"
+                data-count="40"
+                aria-label="Рейтинг товара «Мячик «Весельчак»»"
+              >
+                <div class="rating-stars" role="group" aria-label="Поставьте оценку от 1 до 5">
+                  <button class="star" type="button" data-value="1" aria-label="Оценить на 1 из 5">★</button>
+                  <button class="star" type="button" data-value="2" aria-label="Оценить на 2 из 5">★</button>
+                  <button class="star" type="button" data-value="3" aria-label="Оценить на 3 из 5">★</button>
+                  <button class="star" type="button" data-value="4" aria-label="Оценить на 4 из 5">★</button>
+                  <button class="star" type="button" data-value="5" aria-label="Оценить на 5 из 5">★</button>
+                </div>
+
+                <span class="rating-meta">
+                  <span class="rating-value">4,9</span>
+                  <span class="rating-count">40 оценок</span>
+                </span>
+
+                <button class="rating-remove" type="button" hidden>Убрать оценку</button>
+              </div>
 
               <div class="product-footer">
                 <span class="price">490 ₽</span>
@@ -1859,6 +1995,28 @@
                 порадовать любимого котика.
               </p>
 
+              <div
+                class="product-rating"
+                data-total="252"
+                data-count="56"
+                aria-label="Рейтинг товара «Котолакомство»"
+              >
+                <div class="rating-stars" role="group" aria-label="Поставьте оценку от 1 до 5">
+                  <button class="star" type="button" data-value="1" aria-label="Оценить на 1 из 5">★</button>
+                  <button class="star" type="button" data-value="2" aria-label="Оценить на 2 из 5">★</button>
+                  <button class="star" type="button" data-value="3" aria-label="Оценить на 3 из 5">★</button>
+                  <button class="star" type="button" data-value="4" aria-label="Оценить на 4 из 5">★</button>
+                  <button class="star" type="button" data-value="5" aria-label="Оценить на 5 из 5">★</button>
+                </div>
+
+                <span class="rating-meta">
+                  <span class="rating-value">4,5</span>
+                  <span class="rating-count">56 оценок</span>
+                </span>
+
+                <button class="rating-remove" type="button" hidden>Убрать оценку</button>
+              </div>
+
               <div class="product-footer">
                 <span class="price">350 ₽</span>
 
@@ -1886,6 +2044,28 @@
                 кошек и собак.
               </p>
 
+              <div
+                class="product-rating"
+                data-total="210"
+                data-count="50"
+                aria-label="Рейтинг товара «Мягкая расчёска»"
+              >
+                <div class="rating-stars" role="group" aria-label="Поставьте оценку от 1 до 5">
+                  <button class="star" type="button" data-value="1" aria-label="Оценить на 1 из 5">★</button>
+                  <button class="star" type="button" data-value="2" aria-label="Оценить на 2 из 5">★</button>
+                  <button class="star" type="button" data-value="3" aria-label="Оценить на 3 из 5">★</button>
+                  <button class="star" type="button" data-value="4" aria-label="Оценить на 4 из 5">★</button>
+                  <button class="star" type="button" data-value="5" aria-label="Оценить на 5 из 5">★</button>
+                </div>
+
+                <span class="rating-meta">
+                  <span class="rating-value">4,2</span>
+                  <span class="rating-count">50 оценок</span>
+                </span>
+
+                <button class="rating-remove" type="button" hidden>Убрать оценку</button>
+              </div>
+
               <div class="product-footer">
                 <span class="price">620 ₽</span>
 
@@ -1912,6 +2092,28 @@
                 Питательная смесь семян и злаков для хомяков,
                 морских свинок и крыс.
               </p>
+
+              <div
+                class="product-rating"
+                data-total="86"
+                data-count="18"
+                aria-label="Рейтинг товара «Зёрнышки «Шустрик»»"
+              >
+                <div class="rating-stars" role="group" aria-label="Поставьте оценку от 1 до 5">
+                  <button class="star" type="button" data-value="1" aria-label="Оценить на 1 из 5">★</button>
+                  <button class="star" type="button" data-value="2" aria-label="Оценить на 2 из 5">★</button>
+                  <button class="star" type="button" data-value="3" aria-label="Оценить на 3 из 5">★</button>
+                  <button class="star" type="button" data-value="4" aria-label="Оценить на 4 из 5">★</button>
+                  <button class="star" type="button" data-value="5" aria-label="Оценить на 5 из 5">★</button>
+                </div>
+
+                <span class="rating-meta">
+                  <span class="rating-value">4,8</span>
+                  <span class="rating-count">18 оценок</span>
+                </span>
+
+                <button class="rating-remove" type="button" hidden>Убрать оценку</button>
+              </div>
 
               <div class="product-footer">
                 <span class="price">420 ₽</span>
@@ -2506,6 +2708,115 @@
           applyFilter("all");
           closeCart();
         });
+      });
+
+      /* ---------- Ratings ---------- */
+
+      function pluralRatings(count) {
+        const n = Math.abs(count) % 100;
+        const n1 = n % 10;
+
+        if (n > 10 && n < 20) return `${count} оценок`;
+        if (n1 > 1 && n1 < 5) return `${count} оценки`;
+        if (n1 === 1) return `${count} оценка`;
+        return `${count} оценок`;
+      }
+
+      document.querySelectorAll(".product-rating").forEach((widget) => {
+        const stars = Array.from(widget.querySelectorAll(".star"));
+        const valueEl = widget.querySelector(".rating-value");
+        const countEl = widget.querySelector(".rating-count");
+        const removeBtn = widget.querySelector(".rating-remove");
+
+        const state = {
+          total: parseFloat(widget.dataset.total || 0),
+          count: parseInt(widget.dataset.count || 0, 10),
+          user: 0,
+        };
+
+        function average() {
+          return state.count > 0 ? state.total / state.count : 0;
+        }
+
+        /* Рисуем звёзды под заданное значение (среднее или превью) */
+        function draw(targetValue) {
+          stars.forEach((star, i) => {
+            const idx = i + 1;
+            let fill = 0;
+
+            if (targetValue >= idx) {
+              fill = 100;
+            } else if (targetValue > idx - 1) {
+              fill = (targetValue - (idx - 1)) * 100;
+            }
+
+            star.style.setProperty("--fill", `${fill}%`);
+          });
+        }
+
+        function render() {
+          const avg = average();
+
+          draw(avg);
+
+          valueEl.textContent =
+            state.count > 0 ? avg.toFixed(1).replace(".", ",") : "0,0";
+          countEl.textContent = pluralRatings(state.count);
+
+          removeBtn.hidden = state.user === 0;
+
+          stars.forEach((star) => {
+            const value = parseInt(star.dataset.value, 10);
+            star.setAttribute("aria-pressed", String(value <= state.user));
+          });
+        }
+
+        function animateValue() {
+          valueEl.classList.remove("pop");
+          void valueEl.offsetWidth;
+          valueEl.classList.add("pop");
+        }
+
+        stars.forEach((star) => {
+          const value = parseInt(star.dataset.value, 10);
+
+          /* Превью при наведении и при фокусе */
+          star.addEventListener("mouseenter", () => draw(value));
+          star.addEventListener("focus", () => draw(value));
+
+          star.addEventListener("click", () => {
+            if (state.user === 0) {
+              /* Первая оценка — увеличиваем счётчик */
+              state.count += 1;
+            } else {
+              /* Меняем свою оценку — счётчик не трогаем */
+              state.total -= state.user;
+            }
+
+            state.total += value;
+            state.user = value;
+
+            render();
+            animateValue();
+          });
+        });
+
+        /* Возвращаем отображение к среднему после ухода курсора/фокуса */
+        widget.addEventListener("mouseleave", () => draw(average()));
+        widget.addEventListener("focusout", () => draw(average()));
+
+        removeBtn.addEventListener("click", () => {
+          if (state.user === 0) return;
+
+          state.total -= state.user;
+          state.count -= 1;
+          state.user = 0;
+
+          render();
+          animateValue();
+        });
+
+        render();
       });
 
       /* ---------- Toast ---------- */
